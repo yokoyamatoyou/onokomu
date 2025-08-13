@@ -1,0 +1,45 @@
+【全体構成】
++-- ユーザー (Client)
+|   |-- 一般ユーザー
+|   +-- 管理者
+|
+v (アクセス)
+|
++-- Cloud Run: Streamlit App (フロントエンド)
+|   |
+|   |-- UI / UX (pages/*)
+|   |
+|   |-- 管理画面 (pages/4_管理者画面.py)
+|   |   |
+|   |   |-- (接続先) --> Firestore (ユーザー/RBAC管理)
+|   |   +-- (接続先) --> Stripe (請求/顧客管理)
+|   |
+|   |-- 検索: RAGEngine (src/rag/rag_engine.py)
+|   |   |
+|   |   |-- (接続先) --> Vertex AI (ベクトル検索)
+|   |   |-- (接続先) --> GCS (BM25インデックス取得)
+|   |   |-- (接続先) --> Firestore (チャンク/メタデータ取得)
+|   |   +-- (接続先) --> OpenAI API (LLMによる生成)
+|   |
+|   +-- 取り込み: DocumentManager (src/core/document_manager.py)
+|       |
+|       |-- (接続先) --> GCS (ファイル保存/インデックス更新)
+|       |-- (接続先) --> Firestore (メタ/チャンク保存)
+|       +-- (接続先) --> Vertex AI (ベクトルストア更新)
+|
++-- GCP マネージドサービス
+|   |
+|   |-- Artifact Registry (コンテナイメージ保管)
+|   |-- Cloud Build (CI/CD、ビルドとデプロイ)
+|   +-- Secret Manager (APIキーなどの機密情報管理)
+|
++-- データ/AI 基盤
+|   |
+|   |-- Firestore (データベース)
+|   |-- Google Cloud Storage (GCS) (ファイルストレージ)
+|   +-- Vertex AI (ベクトル検索/AIモデル)
+|
++-- 外部サービス
+    |
+    |-- OpenAI API
+    +-- Stripe (決済)

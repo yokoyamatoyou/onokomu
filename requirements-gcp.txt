@@ -1,0 +1,55 @@
+# ===== GCPデプロイ最適化版 =====
+# GCP環境（Linux）で確実に動作する依存関係のみ
+# プリコンパイル済みバイナリを優先使用
+
+# 基本フレームワーク
+streamlit>=1.28.0,<2.0.0
+pandas>=2.0.0,<3.0.0
+plotly>=5.15.0,<6.0.0
+
+# Google SDKs（GCP環境で最適化）
+google-cloud-firestore>=2.11.0,<3.0.0
+google-cloud-storage>=2.10.0,<3.0.0
+google-cloud-aiplatform>=1.35.0,<2.0.0
+google-cloud-secret-manager>=2.16.0,<3.0.0
+google-api-python-client>=2.95.0,<3.0.0
+google-auth-httplib2>=0.1.0,<1.0.0
+google-auth-oauthlib>=1.0.0,<2.0.0
+
+# 基本ライブラリ（GCP環境で安定）
+numpy>=1.24.0,<2.0.0
+uritemplate>=4.1.0,<5.0.0
+httplib2>=0.22.0,<1.0.0
+google-api-core>=2.11.0,<3.0.0
+protobuf>=4.21.0,<5.0.0
+grpcio>=1.50.0,<2.0.0
+
+# ドキュメント処理（GCP環境で最適化）
+python-docx>=0.8.11,<1.0.0
+lxml>=4.9.0,<5.0.0
+PyMuPDF>=1.23.0,<2.0.0  # GCP環境ではプリコンパイル済み
+
+# LLM クライアント
+openai>=1.0.0,<2.0.0
+anthropic>=0.7.0,<1.0.0
+google-generativeai>=0.3.0,<1.0.0
+
+# 検索・RAG
+rank-bm25>=0.2.2,<1.0.0
+
+# 基本画像処理
+Pillow>=9.5.0,<10.0.0
+
+# ===== OCR機能（GCP環境で段階的に追加） =====
+# 基本OCR（軽量）
+opencv-python-headless>=4.8.0,<5.0.0
+pytesseract>=0.3.10,<1.0.0
+
+# 高度OCR（必要に応じて）
+# easyocr>=1.7.0,<2.0.0
+# torch>=2.0.0,<3.0.0
+# torchvision>=0.15.0,<1.0.0
+
+# ===== 開発用は除外 =====
+# pytest, playwright等は本番環境では不要
+

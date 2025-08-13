@@ -1,0 +1,51 @@
+# ===== GCPデプロイテスト用・軽量版 =====
+# 重い依存関係を除外し、基本機能のみで動作確認
+
+# 基本フレームワーク
+streamlit
+pandas>=2.2,<2.3
+plotly>=5.18,<6
+
+# Google SDKs（必要最小限）
+google-cloud-firestore>=2.14,<3
+google-cloud-storage>=2.14,<3
+google-cloud-aiplatform>=1.64,<2
+google-cloud-secret-manager>=2.18,<3
+google-api-python-client>=2.100,<3
+google-auth-httplib2>=0.2.0,<1
+google-auth-oauthlib>=1.0.0,<2
+
+# 基本ライブラリ（既存のバージョンを使用）
+# numpy>=1.26,<2.0  # 既にNumPy 2.3.1がインストール済み
+uritemplate>=4.0.0,<5
+httplib2>=0.20,<0.23
+google-api-core>=2.15,<3
+protobuf>=4.23,<6
+grpcio>=1.58,<2
+
+# ドキュメント処理（基本）
+python-docx>=1.1.2,<1.2
+lxml>=4.9.3,<5.0
+PyMuPDF>=1.23,<1.24
+
+# LLM クライアント
+openai==1.86.0
+anthropic==0.60.0
+google-generativeai
+
+# 検索・RAG
+rank-bm25>=0.2,<0.3
+
+# 基本画像処理（軽量）
+Pillow>=9.5,<10.0
+
+# ===== OCR機能は条件付きで有効化 =====
+# 本番環境では必要に応じて追加
+# opencv-python-headless==4.8.1.78
+# pytesseract
+# easyocr==1.7.1
+# torch==2.1.0
+# torchvision==0.16.0
+
+# ===== 開発用は除外 =====
+# pytest, playwright等は本番環境では不要
